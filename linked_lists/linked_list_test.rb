@@ -1,12 +1,29 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
+require_relative './linked_list'
 
 class LinkedListTest < Minitest::Test
   attr_reader :list
 
   def setup
     @list = LinkedList.new
+  end
+
+  def test_it_starts_with_zero_elements
+    assert_equal 0, list.count
+  end
+
+  def test_it_pushes_a_single_element
+    list.push("hello")
+    assert_equal 1, list.count
+  end
+
+  def test_it_pushes_three_elements_onto_a_list
+    list.push("hello")
+    list.push("world")
+    list.push("today")
+    assert_equal 3, list.count
   end
 
   def test_nodes_have_data
